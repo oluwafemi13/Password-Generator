@@ -1,9 +1,24 @@
+const resultElement = document.getElementById('result')
+const lengthElement = document.getElementById('length')
+const uppercaseElenemt = document.getElementById('uppercase')
+const lowercaseElement = document.getElementById('lowercase')
+const numbersElement = document.getElementById('numbers')
+const symbolsElenemt = document.getElementById('symbols')
+const generateElement = document.getElementById('generate')
+const clipboardElement = document.getElementById('clipboard')
+
 const randomFunc={
     lower: getRandomLowercase,
     upper: getRandomUppercase,
     Number: getRandomNumber,
     symbol: getRandomSymbol
 }
+
+generateElement.addEventListener('click', ()=>{
+    const length =+ lengthElement.vlaue
+    const hasLower = lowercaseElement.checked
+    const hasUpper = lowercaseElement.checked
+})
 
 
 function getRandomLowercase(){
