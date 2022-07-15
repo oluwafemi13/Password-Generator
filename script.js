@@ -18,8 +18,31 @@ generateElement.addEventListener('click', ()=>{
     const length =+ lengthElement.vlaue
     const hasLower = lowercaseElement.checked
     const hasUpper = lowercaseElement.checked
+    const hasSymbol = symbolsElenemt.checked
+    const hasNumber = numbersElement.checked
+
+    resultElement.innerText = generatePassword(hasLower, hasNumber, hasSymbol, hasUpper, length)
 })
 
+function generatePassword(lower, number,symbol, upper, length){
+    let generatedPassword = ''
+    const typesCount = lower + upper+ number+ symbol
+    const typesArr = [{lower}, {number}, {symbol}, {upper}].filter(item =>Object.values(item)[0])
+
+    if(typesCount ===0){
+        return ''
+    }
+    for(let i=0; i<length; i += typesCount){
+        typesArr.forEach(type =>{
+            const funcName = Object.keys(type)[0]
+            generatedPassword += randomFunc[funcName]()
+        })
+
+    }
+    const finalPassword = generatedPassword.slice(0, length)
+
+    return finalPassword
+}
 
 function getRandomLowercase(){
     return String.fromCharcode(Math.floor(Math.random()*25)+97)
